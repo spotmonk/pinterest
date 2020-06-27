@@ -1,0 +1,18 @@
+{
+  "userboard1": {
+    "UID": "Kkj1pZbQX1WSbYsz7o3SxrP5gQ43",
+    "boardId": "board1"
+  },
+  "userboard2": {
+    "UID": "Kkj1pZbQX1WSbYsz7o3SxrP5gQ43",
+    "boardId": "board3"
+  },
+  "userboard3": {
+    "UID": "cBtLcOf3XqUwMlmhh5VApfJ4PVt1",
+    "boardId": "board2"
+  },
+  "userboard4": {
+    "UID": "cBtLcOf3XqUwMlmhh5VApfJ4PVt1",
+    "boardId": "board3"
+  }
+}

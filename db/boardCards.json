@@ -1,0 +1,26 @@
+{
+  "boardCard1": {
+    "boardId": "board1",
+    "cardId": "card1"
+  },
+  "boardCard2": {
+    "boardId": "board1",
+    "cardId": "card2"
+  },
+  "boardCard3": {
+    "boardId": "board2",
+    "cardId": "card3"
+  },
+  "boardCard4": {
+    "boardId": "board2",
+    "cardId": "card4"
+  },
+  "boardCard5": {
+    "boardId": "board3",
+    "cardId": "card5"
+  },
+  "boardCard6": {
+    "boardId": "board3",
+    "cardId": "card6"
+  }
+}
