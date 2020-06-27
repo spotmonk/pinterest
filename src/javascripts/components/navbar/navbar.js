@@ -1,17 +1,22 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import auth from '../components/auth/auth';
+import auth from '../auth/auth';
+import body from '../body/body';
 
 const startUp = () => {
-  const logInOutButton = $('#navbar-logout-button');
+  const logInButton = $('#navbar-login-button');
+  const logOutButton = $('#navbar-logout-button');
   firebase.auth().onAuthStateChanged((user) => {
     if (!user) {
-      logInOutButton.html('<i class="fab fa-google-plus"></i> LOG ME IN!!!');
-      logInOutButton.click(auth.signIn);
+      logInButton.removeClass('hide');
+      logOutButton.addClass('hide');
     } else {
-      logInOutButton.html('<i class="fas fa-sign-out-alt"></i>  Logout');
-      logInOutButton.click(auth.logOut);
+      logInButton.addClass('hide');
+      logOutButton.removeClass('hide');
     }
+    logInButton.click(auth.signIn);
+    logOutButton.click(auth.logOut);
+    body.bodyStart();
   });
 };
 
