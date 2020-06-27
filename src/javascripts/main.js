@@ -1,7 +1,12 @@
+import firebase from 'firebase/app';
+
 import '../styles/main.scss';
+import navbar from './components/navbar/navbar';
+import apikeys from './helpers/apiKeys.json';
 
 const init = () => {
-  console.warn('it works!');
+  firebase.initializeApp(apikeys.firebaseConfig);
+  navbar.startUp();
 };
 
 init();
