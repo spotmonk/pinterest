@@ -6,7 +6,7 @@ const cardHTML = () => {
   const cardsDiv = $('#cards');
   cardData.getCards()
     .then((cards) => {
-      let domString = '<h2 class="text-center">Cards</h2><div class="d-flex flex-wrap">';
+      let domString = '<div class="d-flex flex-wrap">';
       cards.forEach((card) => {
         domString += cardBuilder.makeCards(card);
       });

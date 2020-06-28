@@ -1,5 +1,6 @@
 import auth from '../auth/auth';
 import cardsList from '../cardsList/cardsList';
+import boardsList from '../boardsList/boardsList';
 
 const bodyStart = () => {
   const greetDiv = $('#greet');
@@ -13,6 +14,7 @@ const bodyStart = () => {
     greetDiv.text(`Hello ${user.displayName}!`);
     cardsList.cardHTML();
     boardsDiv.html('<h1>Your Board will be here</h1>');
+    boardsList.getUserBoards();
   }
 };
 
