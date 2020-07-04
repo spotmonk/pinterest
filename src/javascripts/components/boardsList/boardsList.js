@@ -2,9 +2,10 @@ import boardData from '../../helpers/data/boardData';
 import auth from '../auth/auth';
 import utils from '../../helpers/utils';
 import './boardList.scss';
+import cardsList from '../cardsList/cardsList';
 
 const printBoardNames = (names) => {
-  let domString = '<ul class="list-group"><li class="boards list-group-item active">All</li>';
+  let domString = '<ul class="list-group"><li id="explore" class="boards list-group-item active">Explore</li><li id="all" class="boards list-group-item">All Boards</li>';
   names.forEach((name) => {
     domString += `<li id="${name}board" class="boards list-group-item">${name}</li>`;
   });
@@ -13,6 +14,7 @@ const printBoardNames = (names) => {
   $('.boards').click((e) => {
     $('.boards').removeClass('active');
     $(e.target).addClass('active');
+    cardsList.cardHTML(e);
   });
 };
 

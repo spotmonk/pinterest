@@ -3,7 +3,7 @@ import apiKeys from '../apiKeys.json';
 
 const baseUrl = apiKeys.firebaseConfig.databaseURL;
 
-const getBoards = () => new Promise((resolve, reject) => {
+const oldGetBoards = () => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/boards.json`)
     .then((response) => {
       const boardObjects = response.data;
@@ -19,8 +19,18 @@ const getBoards = () => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
+const getBoards = () => axios.get(`${baseUrl}/boards.json`);
+
 const getBoardByBoardId = (boardId) => axios.get(`${baseUrl}/boards.json?orderBy="boardId"&equalTo="${boardId}"`);
+
+const getBoardByCategory = (category) => axios.get(`${baseUrl}/boards.json?orderBy="category"&equalTo="${category}"`);
 
 const getBoardIDbyUID = (uid) => axios.get(`${baseUrl}/userBoards.json?orderBy="UID"&equalTo="${uid}"`);
 
-export default { getBoards, getBoardByBoardId, getBoardIDbyUID };
+export default {
+  getBoards,
+  getBoardByBoardId,
+  getBoardIDbyUID,
+  getBoardByCategory,
+  oldGetBoards,
+};
