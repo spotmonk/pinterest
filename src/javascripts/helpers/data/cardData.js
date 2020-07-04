@@ -4,7 +4,7 @@ import utils from '../utils';
 
 const baseUrl = apiKeys.firebaseConfig.databaseURL;
 
-const getCards = () => new Promise((resolve, reject) => {
+const getAllCards = () => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/cards.json`)
     .then((response) => {
       const cards = utils.responseToArray(response);
@@ -13,4 +13,12 @@ const getCards = () => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-export default { getCards };
+const getBoardCardsbyBoardId = (boardId) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/boardcards.json?orderBy="boardId"&equalTo="${boardId}"`)
+    .then((response) => {
+      resolve(utils.responseToArray(response));
+    })
+    .catch((err) => reject(err));
+});
+
+export default { getAllCards, getBoardCardsbyBoardId };

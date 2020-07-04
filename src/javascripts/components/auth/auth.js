@@ -6,10 +6,21 @@ const signIn = () => {
   firebase.auth().signInWithPopup(googleProvider);
 };
 
+const switchUser = () => {
+  const googleProvider = new firebase.auth.GoogleAuthProvider();
+  googleProvider.setCustomParameters({ prompt: 'select_account' });
+  firebase.auth().signInWithPopup(googleProvider);
+};
+
 const logOut = () => {
   firebase.auth().signOut();
 };
 
 const getUser = () => firebase.auth().currentUser;
 
-export default { signIn, logOut, getUser };
+export default {
+  signIn,
+  logOut,
+  getUser,
+  switchUser,
+};
