@@ -13,4 +13,7 @@ const getUserCardsByCardId = (cardId) => new Promise((resolve, reject) => {
     })
     .catch((err) => reject(err));
 });
-export default { getBoardCards, getUserCardsByCardId };
+
+const getUserCardsByUid = (uid) => axios.get(`${baseUrl}/userCards.json?orderBy="uid"&equalTo="${uid}"`);
+
+export default { getBoardCards, getUserCardsByCardId, getUserCardsByUid };

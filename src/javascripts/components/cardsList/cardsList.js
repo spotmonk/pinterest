@@ -38,10 +38,10 @@ const allCardsHTML = () => {
 };
 
 const cardHTML = (e) => {
-  const targetText = $(e.target).text();
-  if (targetText === 'Explore') { allCardsHTML(); addClickEvents(); return; }
+  const targetId = e.target.id;
+  if (targetId === 'explore') { allCardsHTML(); addClickEvents(); return; }
   const cardsDiv = $('#cards');
-  if (targetText === 'All Boards') {
+  if (targetId === 'all-boards') {
     smash.getCardsByUser()
       .then((cards) => {
         let domString = '<div class="d-flex flex-wrap">';
@@ -54,7 +54,7 @@ const cardHTML = (e) => {
       })
       .catch((err) => console.error('did not work', err));
   } else {
-    smash.cardsByBoardCategory(targetText)
+    smash.cardsByBoardCategory(targetId)
       .then((cardsArr) => {
         let domString = '<div class="d-flex flex-wrap">';
         cardsArr[0].cards.forEach((card) => {
