@@ -2,6 +2,20 @@ import cardBuilder from '../cardBuilder/cardBuilder';
 import cardData from '../../helpers/data/cardData';
 import auth from '../auth/auth';
 import smash from '../../helpers/data/smash';
+import pinButton from '../pinButton/pinButton';
+
+import './cardList.scss';
+
+const addClickEvents = () => {
+  $('.pin').on('click', (event) => {
+    if ($(event.target).hasClass('btn-danger')) {
+      console.warn('delete pin');
+      pinButton.deleteTarget(event);
+    } else {
+      console.warn('new pin');
+    }
+  });
+};
 
 const allCardsHTML = () => {
   const cardsDiv = $('#cards');
@@ -13,6 +27,9 @@ const allCardsHTML = () => {
       });
       domString += '</div>';
       cardsDiv.html(domString);
+      addClickEvents();
+      $('.pin').addClass('btn-primary');
+      $('.pin').removeClass('btn-danger');
       if (auth.getUser() === null) {
         $('.pin').addClass('hide');
       }
@@ -22,10 +39,10 @@ const allCardsHTML = () => {
 
 const cardHTML = (e) => {
   const targetText = $(e.target).text();
-  if (targetText === 'Explore') { allCardsHTML(); return; }
+  if (targetText === 'Explore') { allCardsHTML(); addClickEvents(); return; }
   const cardsDiv = $('#cards');
   if (targetText === 'All Boards') {
-    smash.getAllcardsByAllCategory()
+    smash.getCardsByUser()
       .then((cards) => {
         let domString = '<div class="d-flex flex-wrap">';
         for (let i = 0; i < cards.length; i += 1) {
@@ -33,6 +50,7 @@ const cardHTML = (e) => {
         }
         domString += '</div>';
         cardsDiv.html(domString);
+        addClickEvents();
       })
       .catch((err) => console.error('did not work', err));
   } else {
@@ -44,9 +62,7 @@ const cardHTML = (e) => {
         });
         domString += '</div>';
         cardsDiv.html(domString);
-        if (auth.getUser() === null) {
-          $('.pin').addClass('hide');
-        }
+        addClickEvents();
       })
       .catch((err) => console.error('did not work', err));
   }
