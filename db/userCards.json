@@ -1,0 +1,42 @@
+{
+  "userCard1": {
+    "uid": "Kkj1pZbQX1WSbYsz7o3SxrP5gQ43",
+    "boardId":"board1",
+    "cardId": "card1"
+  },
+  "userCard2": {
+    "uid": "Kkj1pZbQX1WSbYsz7o3SxrP5gQ43",
+    "boardId": "board1",
+    "cardId": "card2"
+  },
+  "userCard3": {
+    "uid": "cBtLcOf3XqUwMlmhh5VApfJ4PVt1",
+    "boardId": "board2",
+    "cardId": "card3"
+  },
+  "userCard4": {
+    "uid": "cBtLcOf3XqUwMlmhh5VApfJ4PVt1",
+    "boardId": "board2",
+    "cardId": "card4"
+  },
+  "userCard5": {
+    "uid": "Kkj1pZbQX1WSbYsz7o3SxrP5gQ43",
+    "boardId": "board3",
+    "cardId": "card5"
+  },
+  "userCard6": {
+    "uid": "Kkj1pZbQX1WSbYsz7o3SxrP5gQ43",
+    "boardId": "board3",
+    "cardId": "card6"
+  },
+  "userCard7": {
+    "uid": "cBtLcOf3XqUwMlmhh5VApfJ4PVt1",
+    "boardId": "board3",
+    "cardId": "card5"
+  },
+  "userCard8": {
+    "uid": "cBtLcOf3XqUwMlmhh5VApfJ4PVt1",
+    "boardId": "board3",
+    "cardId": "card6"
+  }
+ }

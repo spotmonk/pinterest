@@ -21,4 +21,6 @@ const getBoardCardsbyBoardId = (boardId) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-export default { getAllCards, getBoardCardsbyBoardId };
+const unPin = (userCard) => axios.delete(`${baseUrl}/userCards/${userCard}.json`);
+
+export default { getAllCards, getBoardCardsbyBoardId, unPin };
