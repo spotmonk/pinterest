@@ -8,7 +8,7 @@ import userCardsData from '../../helpers/data/userCardsData';
 const printBoardNames = (boards) => {
   let domString = '<ul class="list-group"><li id="explore" class="boards list-group-item active">Explore</li><li id="all-boards" class="boards list-group-item">All Boards</li>';
   boards.forEach((board) => {
-    domString += `<li id="${board.id}board" class="boards list-group-item">${board.category}</li>`;
+    domString += `<li id="${board.id}" class="boards list-group-item">${board.category}</li>`;
   });
   domString += '</ul>';
   utils.printToDom('#boards', domString);
@@ -51,9 +51,10 @@ const getUserBoards = () => {
         const boards = [];
         userCards.forEach((UC) => {
           const board = allBoards.find((b) => b.boardId === UC.boardId);
-          boards.push(board);
+          if (boards.indexOf(board) < 0) {
+            boards.push(board);
+          }
         });
-        console.warn(boards);
         printBoardNames(boards);
       });
     })

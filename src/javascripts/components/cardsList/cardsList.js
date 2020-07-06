@@ -2,6 +2,7 @@ import cardBuilder from '../cardBuilder/cardBuilder';
 import cardData from '../../helpers/data/cardData';
 import auth from '../auth/auth';
 import smash from '../../helpers/data/smash';
+// eslint-disable-next-line import/no-cycle
 import pinButton from '../pinButton/pinButton';
 
 import './cardList.scss';
@@ -9,7 +10,6 @@ import './cardList.scss';
 const addClickEvents = () => {
   $('.pin').on('click', (event) => {
     if ($(event.target).hasClass('btn-danger')) {
-      console.warn('delete pin');
       pinButton.deleteTarget(event);
     } else {
       console.warn('new pin');
@@ -57,7 +57,7 @@ const cardHTML = (e) => {
     smash.cardsByBoardCategory(targetId)
       .then((cardsArr) => {
         let domString = '<div class="d-flex flex-wrap">';
-        cardsArr[0].cards.forEach((card) => {
+        cardsArr.forEach((card) => {
           domString += cardBuilder.makeCards(card);
         });
         domString += '</div>';
@@ -67,4 +67,4 @@ const cardHTML = (e) => {
       .catch((err) => console.error('did not work', err));
   }
 };
-export default { allCardsHTML, cardHTML };
+export default { allCardsHTML, cardHTML, addClickEvents };
