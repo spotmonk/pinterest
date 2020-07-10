@@ -19,28 +19,6 @@ const printBoardNames = (boards) => {
   });
 };
 
-// const getUserBoards = () => {
-//   const user = auth.getUser();
-//   if (user) {
-//     boardData.getBoardIDbyUID(user.uid)
-//       .then((response) => {
-//         const boardNames = [];
-//         const userBoards = utils.responseToArray(response);
-//         userBoards.forEach((userBoard) => {
-//           boardData.getBoardByBoardId(userBoard.boardId)
-//             .then((resp) => {
-//               const boards = utils.responseToArray(resp);
-//               boards.forEach((board) => {
-//                 boardNames.push(board.category);
-//               });
-//               printBoardNames(boardNames);
-//             });
-//         });
-//       })
-//       .catch((err) => console.error('Get Boards Failed', err));
-//   }
-// };
-
 const getUserBoards = () => {
   const user = auth.getUser();
   if (user) {
@@ -50,7 +28,7 @@ const getUserBoards = () => {
         const allBoards = utils.responseToArray(boardsresp);
         const boards = [];
         userCards.forEach((UC) => {
-          const board = allBoards.find((b) => b.boardId === UC.boardId);
+          const board = allBoards.find((b) => b.id === UC.boardId);
           if (boards.indexOf(board) < 0) {
             boards.push(board);
           }
