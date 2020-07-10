@@ -1,10 +1,12 @@
 import auth from '../auth/auth';
 import cardsList from '../cardsList/cardsList';
 import boardsList from '../boardsList/boardsList';
+import addPin from '../addPin/addPin';
 
 const bodyStart = () => {
   const greetDiv = $('#greet');
   const boardsDiv = $('#boards');
+  $('#modalSubmit').click(addPin.addPinEvent);
   const user = auth.getUser();
   if (user === null) {
     greetDiv.text('Hello Guest! Log in For your personalized experience');

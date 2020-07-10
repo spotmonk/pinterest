@@ -16,7 +16,7 @@ const cardsByBoardCategory = (boardId) => new Promise((resolve, reject) => {
     cardData.getAllCards().then((cardsResp) => {
       const cards = [];
       boards.forEach((board) => {
-        const card = cardsResp.find((c) => c.cardId === board.cardId);
+        const card = cardsResp.find((c) => c.id === board.cardId);
         cards.push(card);
       });
       resolve(cards);
@@ -37,7 +37,7 @@ const getCardsByUser = () => new Promise((resolve, reject) => {
     cardData.getAllCards().then((allCards) => {
       const cards = [];
       usercards.forEach((UC) => {
-        const card = allCards.find((c) => c.cardId === UC.cardId);
+        const card = allCards.find((c) => c.id === UC.cardId);
         cards.push(card);
       });
       resolve(cards);

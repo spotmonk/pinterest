@@ -23,4 +23,11 @@ const getBoardCardsbyBoardId = (boardId) => new Promise((resolve, reject) => {
 
 const unPin = (userCard) => axios.delete(`${baseUrl}/userCards/${userCard}.json`);
 
-export default { getAllCards, getBoardCardsbyBoardId, unPin };
+const addPin = (pinObj) => axios.post(`${baseUrl}/cards.json`, pinObj);
+
+export default {
+  getAllCards,
+  getBoardCardsbyBoardId,
+  unPin,
+  addPin,
+};
