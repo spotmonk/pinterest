@@ -30,12 +30,49 @@
   <div class="col-12 text-center" id="greet"></div>
   <div class="row m-0">
     <div class="col-md-2">
-      <div id=add><ul class="list-group m-3"><li class="create-pin list-group-item">Create New Pin</li></ul></div>
+      <div id=add><ul class="list-group m-3"><li class="btn create-pin list-group-item" data-toggle="modal" data-target="#exampleModal">Create New Pin</li></ul></div>
       <div id="boards"></div>
     </div>
     <div class="col-md-10">
       <div id="cards"></div>
     </div>
   </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add a Pin</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div id="addPinModalBody" class="modal-body">
+          <form id="newPinForm" onsubmit="return false"> 
+            <div class="form-group">
+              <label for="newImageUrl">Image URL</label>
+              <input type="url" id="pinImg" class="form-control" id="newImageUrl" aria-describedby="emailHelp" required>
+            </div>
+            <div class="form-group">
+              <label for="newPinUrl">Link</label>
+              <input type="url" id="pinLink" class="form-control" id="newPinUrl" aria-describedby="emailHelp" required>
+            </div>
+            <div class="form-group">
+              <label for="newPinTitle">Title</label>
+              <input type="text" id="pinTitle" class="form-control" id="newPinTitle" aria-describedby="emailHelp" required>
+            </div>
+            <div class="form-group">
+              <label for="newPinDescrip">Title</label>
+              <input type="text" id="PinDescrip" class="form-control" id="newPinDescrip" aria-describedby="emailHelp" required>
+            </div>
+            <button type="submit" id="modalSubmit" class="btn btn-primary">Save changes</button>
+          </form> 
+        </div>
+       
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
