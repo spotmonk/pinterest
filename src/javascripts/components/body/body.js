@@ -19,7 +19,10 @@ const bodyStart = () => {
     greetDiv.text(`Hello ${user.displayName}!`);
     cardsList.allCardsHTML();
     $('#addBoard').removeClass('hide');
-    boardsList.getUserBoards();
+    boardsList.getUserBoards().then((response) => {
+      boardsList.printBoardNames(response);
+    })
+      .catch((err) => console.warn(err));
   }
 };
 

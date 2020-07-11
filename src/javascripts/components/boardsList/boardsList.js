@@ -2,6 +2,7 @@ import boardData from '../../helpers/data/boardData';
 import auth from '../auth/auth';
 import utils from '../../helpers/utils';
 import './boardList.scss';
+// eslint-disable-next-line import/no-cycle
 import cardsList from '../cardsList/cardsList';
 // import userCardsData from '../../helpers/data/userCardsData';
 
@@ -19,7 +20,7 @@ const printBoardNames = (boards) => {
   });
 };
 
-const getUserBoards = () => {
+const getUserBoards = () => new Promise((resolve, reject) => {
   const user = auth.getUser();
   if (user) {
     boardData.getUserBoards().then((response) => {
@@ -40,11 +41,33 @@ const getUserBoards = () => {
             boards.push(board);
           }
         });
-        printBoardNames(boards);
+        resolve(boards);
       });
     })
-      .catch((err) => console.error(err));
+      .catch((err) => reject(err));
   }
+});
+
+const buildDropDown = (boards) => {
+  let domString = `
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fas fa-thumbtack">
+    </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">`;
+  boards.forEach((board) => {
+    domString += `<a class="dropdown-item" value=${board.boardId} href="#">${board.category}</a>`;
+  });
+  domString += '</div></div>';
+  return domString;
 };
 
-export default { getUserBoards };
+const boardsDropDown = () => new Promise((resolve, reject) => {
+  getUserBoards().then((response) => {
+    const boards = response;
+    resolve(buildDropDown(boards));
+  })
+    .catch((err) => reject(err));
+});
+
+export default { getUserBoards, printBoardNames, boardsDropDown };

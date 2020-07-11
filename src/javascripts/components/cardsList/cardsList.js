@@ -6,19 +6,26 @@ import smash from '../../helpers/data/smash';
 import pinButton from '../pinButton/pinButton';
 
 import './cardList.scss';
+import pinToBoard from '../pinToBoard/pinToBoard';
+// eslint-disable-next-line import/no-cycle
+import boardsList from '../boardsList/boardsList';
 
 const addClickEvents = () => {
   $('.pin').on('click', (event) => {
     if ($(event.target).hasClass('btn-danger')) {
       pinButton.deleteTarget(event);
     } else {
-      console.warn('new pin');
+      const boardId = '-MBqzbfqzpZdUeGB3IwU';
+      pinToBoard.addPinToBoard(boardId, event.target.id).then(() => {
+      })
+        .catch((err) => console.warn(err));
     }
   });
 };
 
 const allCardsHTML = () => {
   const cardsDiv = $('#cards');
+  const allSelectorDivs = $('.displayBoards');
   cardData.getAllCards()
     .then((cards) => {
       let domString = '<div class="d-flex flex-wrap">';
@@ -27,6 +34,13 @@ const allCardsHTML = () => {
       });
       domString += '</div>';
       cardsDiv.html(domString);
+      boardsList.boardsDropDown().then((response) => {
+        const html = response;
+        allSelectorDivs.each(() => {
+          $(this).html(html);
+        });
+      })
+        .catch((err) => console.warn(err));
       addClickEvents();
       $('.pin').addClass('btn-primary');
       $('.pin').removeClass('btn-danger');

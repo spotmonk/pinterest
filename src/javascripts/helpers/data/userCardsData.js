@@ -16,4 +16,11 @@ const getUserCardsByCardId = (cardId) => new Promise((resolve, reject) => {
 
 const getUserCardsByUid = (uid) => axios.get(`${baseUrl}/userCards.json?orderBy="uid"&equalTo="${uid}"`);
 
-export default { getUserCards, getUserCardsByCardId, getUserCardsByUid };
+const addUserCard = (UCObject) => axios.post(`${baseUrl}/userCards.json`, UCObject);
+
+export default {
+  getUserCards,
+  getUserCardsByCardId,
+  getUserCardsByUid,
+  addUserCard,
+};
