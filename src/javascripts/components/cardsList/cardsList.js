@@ -15,7 +15,7 @@ const addClickEvents = () => {
     if ($(event.target).hasClass('btn-danger')) {
       pinButton.deleteTarget(event);
     } else {
-      const boardId = '-MBqzbfqzpZdUeGB3IwU';
+      const boardId = $(event.target).parent().find(':selected').val();
       pinToBoard.addPinToBoard(boardId, event.target.id).then(() => {
       })
         .catch((err) => console.warn(err));
@@ -23,9 +23,17 @@ const addClickEvents = () => {
   });
 };
 
+const displayDropDown = () => {
+  const allSelectorDivs = $('.displayBoards');
+  boardsList.boardsDropDown().then((response) => {
+    const html = response;
+    allSelectorDivs.html(html);
+  })
+    .catch((err) => console.warn(err));
+};
+
 const allCardsHTML = () => {
   const cardsDiv = $('#cards');
-  const allSelectorDivs = $('.displayBoards');
   cardData.getAllCards()
     .then((cards) => {
       let domString = '<div class="d-flex flex-wrap">';
@@ -34,16 +42,10 @@ const allCardsHTML = () => {
       });
       domString += '</div>';
       cardsDiv.html(domString);
-      boardsList.boardsDropDown().then((response) => {
-        const html = response;
-        allSelectorDivs.each(() => {
-          $(this).html(html);
-        });
-      })
-        .catch((err) => console.warn(err));
       addClickEvents();
       $('.pin').addClass('btn-primary');
       $('.pin').removeClass('btn-danger');
+      displayDropDown();
       if (auth.getUser() === null) {
         $('.pin').addClass('hide');
       }

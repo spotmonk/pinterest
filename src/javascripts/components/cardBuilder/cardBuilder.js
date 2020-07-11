@@ -6,8 +6,8 @@ const makeCards = (cardData) => {
   <div class="card-body ">
     <h5 class="card-title">${cardData.title}</h5>
     <p class="card-text">${cardData.description}</p></div>
-    <div class="d-flex justify-content-between"> <a href="${cardData.url}" target="_blank" class="btn btn-primary">Visit Site</a> 
-    <button id="${cardData.id}" class="pin btn btn-danger "><i class="fas fa-thumbtack"></i></button><div class="displayBoards"></div></div>
+    <div class="d-flex justify-content-between"> <a href="${cardData.url}" target="_blank" class="btn btn-primary"><i class="fas fa-link"></i></a> 
+    <div class="text-center displayBoards"></div><button id="${cardData.id}" class="pin btn btn-danger "><i class="fas fa-thumbtack"></i></button></div>
 </div>`;
   return domstring;
 };

@@ -48,24 +48,21 @@ const getUserBoards = () => new Promise((resolve, reject) => {
   }
 });
 
-const buildDropDown = (boards) => {
+const buildList = (boards) => {
   let domString = `
-  <div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <i class="fas fa-thumbtack">
-    </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">`;
+  <label>Select Board</label>
+    <select class="chooseBoard form-control">`;
   boards.forEach((board) => {
-    domString += `<a class="dropdown-item" value=${board.boardId} href="#">${board.category}</a>`;
+    domString += `<option value=${board.id}>${board.category}</a>`;
   });
-  domString += '</div></div>';
+  domString += '<select>';
   return domString;
 };
 
 const boardsDropDown = () => new Promise((resolve, reject) => {
   getUserBoards().then((response) => {
     const boards = response;
-    resolve(buildDropDown(boards));
+    resolve(buildList(boards));
   })
     .catch((err) => reject(err));
 });
