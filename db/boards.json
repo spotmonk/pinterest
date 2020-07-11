@@ -1,14 +1,11 @@
 {
   "board1": {
-    "boardId": "board1",
     "category": "Memes"
   },
   "board2": {
-    "boardId": "board2",
     "category": "Anime"
   },
   "board3": {
-    "boardId": "board3",
     "category": "Board Games"
   }
 }

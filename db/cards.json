@@ -1,41 +1,35 @@
 {
   "card1": {
-    "cardId": "card1",
     "imgURL": "https://i.pinimg.com/564x/5c/7b/fb/5c7bfb77d4253aece3b5a3034f7ce5ef.jpg",
     "title": "100 'The Office' Memes",
     "description": "100 Memes and Jokes about 'The Office' AKA the Greatest Show Ever",
     "url": "https://www.buzzfeed.com/amphtml/andyneuenschwander/100-the-office-memes-in-one-big-list"
   },
   "card2": {
-    "cardId": "card2",
     "imgURL": "https://i.pinimg.com/564x/1c/e2/11/1ce211db68f0deafae002b569762b010.jpg",
     "title": "17 of the Funiest Tubmlr Posts",
     "description": "Literally Just 17 Of The Funniest Tumblr Posts You've Never Seen Before",
     "url": "https://www.buzzfeed.com/clareyp/literally-just-17-of-the-funniest-tumblr-posts-you-wbmj"
   },
   "card3": {
-    "cardId": "card3",
     "imgURL": "https://upload.wikimedia.org/wikipedia/en/7/72/Bleachanime.png",
     "title": "Bleach",
     "description": "Bleach (2004) - Japanese Anime Television Series ",
     "url": "https://en.wikipedia.org/wiki/Bleach_(TV_series)"
   },
   "card4": {
-    "cardId": "card4",
     "imgURL": "https://www.gstatic.com/tv/thumb/v22vodart/16982901/p16982901_v_v8_aa.jpg",
     "title": "Made In Abyss",
     "description": "Made in Abyss (2016) ",
     "url": "https://en.wikipedia.org/wiki/Made_in_Abyss"
   },
   "card5": {
-    "cardId": "card5",
     "imgURL": "https://cf.geekdo-images.com/imagepagezoom/img/PGkjCoTGVE7Wa7J2knnI__pdL-I=/fit-in/1200x900/filters:no_upscale()/pic4421569.jpg",
     "title": "In The Hall of the Mountain King",
     "description": "In the Hall of the Mountain King (2019): Lead a band of trolls to excavate their mountain home, erecting statues for glory.",
     "url": "https://boardgamegeek.com/boardgame/265402/hall-mountain-king"
   },
   "card6": {
-    "cardId": "card6",
     "imgURL": "https://cf.geekdo-images.com/imagepagezoom/img/Hnl_wPqu50E2XZcClzqDydceBfw=/fit-in/1200x900/filters:no_upscale()/pic5412874.png",
     "title": "The Great Barrier Reef Card Game",
     "description": "The Great Barrier Reef Card Game is a small-box card game where players grow a portion of the reef in a tableau in front of them.",

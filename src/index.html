@@ -31,6 +31,14 @@
   <div class="row m-0">
     <div class="col-md-2">
       <div id=add><ul class="list-group m-3"><li class="btn create-pin list-group-item" data-toggle="modal" data-target="#exampleModal">Create New Pin</li></ul></div>
+      <div id="addBoard" class="hide"><label id="NBLabel" for="newBoardGroup">Create New Board</label>
+      <div class="input-group mb-3">
+        <div id="newBoardGroup"class="input-group-append">
+          <button id="addBoardButton" class="btn btn-primary btn-outline-dark" type="button"><i style="color:white" class="fas fa-plus"></i></button>
+        </div>
+        <input id="newBoard" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+      </div>
+    </div>
       <div id="boards"></div>
     </div>
     <div class="col-md-10">
@@ -52,19 +60,19 @@
           <form id="newPinForm" onsubmit="return false"> 
             <div class="form-group">
               <label for="newImageUrl">Image URL</label>
-              <input type="url" id="pinImg" class="form-control" id="newImageUrl" aria-describedby="emailHelp" required>
+              <input type="url" class="form-control" id="newImageUrl" aria-describedby="emailHelp" required>
             </div>
             <div class="form-group">
               <label for="newPinUrl">Link</label>
-              <input type="url" id="pinLink" class="form-control" id="newPinUrl" aria-describedby="emailHelp" required>
+              <input type="url" class="form-control" id="newPinUrl" aria-describedby="emailHelp" required>
             </div>
             <div class="form-group">
               <label for="newPinTitle">Title</label>
-              <input type="text" id="pinTitle" class="form-control" id="newPinTitle" aria-describedby="emailHelp" required>
+              <input type="text" class="form-control" id="newPinTitle" aria-describedby="emailHelp" required>
             </div>
             <div class="form-group">
               <label for="newPinDescrip">Title</label>
-              <input type="text" id="PinDescrip" class="form-control" id="newPinDescrip" aria-describedby="emailHelp" required>
+              <input type="text" class="form-control" id="newPinDescrip" aria-describedby="emailHelp" required>
             </div>
             <button type="submit" id="modalSubmit" class="btn btn-primary">Save changes</button>
           </form> 
