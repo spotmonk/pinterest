@@ -2,6 +2,7 @@ import boardData from '../../helpers/data/boardData';
 import auth from '../auth/auth';
 import utils from '../../helpers/utils';
 import './boardList.scss';
+// eslint-disable-next-line import/no-cycle
 import cardsList from '../cardsList/cardsList';
 // import userCardsData from '../../helpers/data/userCardsData';
 
@@ -19,7 +20,7 @@ const printBoardNames = (boards) => {
   });
 };
 
-const getUserBoards = () => {
+const getUserBoards = () => new Promise((resolve, reject) => {
   const user = auth.getUser();
   if (user) {
     boardData.getUserBoards().then((response) => {
@@ -40,11 +41,30 @@ const getUserBoards = () => {
             boards.push(board);
           }
         });
-        printBoardNames(boards);
+        resolve(boards);
       });
     })
-      .catch((err) => console.error(err));
+      .catch((err) => reject(err));
   }
+});
+
+const buildList = (boards) => {
+  let domString = `
+  <label>Select Board</label>
+    <select class="chooseBoard form-control">`;
+  boards.forEach((board) => {
+    domString += `<option value=${board.id}>${board.category}</a>`;
+  });
+  domString += '<select>';
+  return domString;
 };
 
-export default { getUserBoards };
+const boardsDropDown = () => new Promise((resolve, reject) => {
+  getUserBoards().then((response) => {
+    const boards = response;
+    resolve(buildList(boards));
+  })
+    .catch((err) => reject(err));
+});
+
+export default { getUserBoards, printBoardNames, boardsDropDown };

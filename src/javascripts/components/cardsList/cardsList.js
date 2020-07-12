@@ -6,15 +6,30 @@ import smash from '../../helpers/data/smash';
 import pinButton from '../pinButton/pinButton';
 
 import './cardList.scss';
+import pinToBoard from '../pinToBoard/pinToBoard';
+// eslint-disable-next-line import/no-cycle
+import boardsList from '../boardsList/boardsList';
 
 const addClickEvents = () => {
   $('.pin').on('click', (event) => {
     if ($(event.target).hasClass('btn-danger')) {
       pinButton.deleteTarget(event);
     } else {
-      console.warn('new pin');
+      const boardId = $(event.target).parent().find(':selected').val();
+      pinToBoard.addPinToBoard(boardId, event.target.id).then(() => {
+      })
+        .catch((err) => console.warn(err));
     }
   });
+};
+
+const displayDropDown = () => {
+  const allSelectorDivs = $('.displayBoards');
+  boardsList.boardsDropDown().then((response) => {
+    const html = response;
+    allSelectorDivs.html(html);
+  })
+    .catch((err) => console.warn(err));
 };
 
 const allCardsHTML = () => {
@@ -30,6 +45,7 @@ const allCardsHTML = () => {
       addClickEvents();
       $('.pin').addClass('btn-primary');
       $('.pin').removeClass('btn-danger');
+      displayDropDown();
       if (auth.getUser() === null) {
         $('.pin').addClass('hide');
       }
