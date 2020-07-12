@@ -6,17 +6,38 @@ import './boardList.scss';
 import cardsList from '../cardsList/cardsList';
 // import userCardsData from '../../helpers/data/userCardsData';
 
+const makeDropDown = (boardName) => {
+  const dropdown = `<div class="dropdown-menu">
+  <form class="px-4 py-3">
+  <div class="dropdown-item">Are you sure you want to delete board: ${boardName}?</div>
+    <button id="submit" type="submit" class="btn btn-primary">Yes</button>
+    <button class="close-dropdown btn btn-primary">No</button>
+  </form>
+</div>`;
+  return dropdown;
+};
+
 const printBoardNames = (boards) => {
   let domString = '<ul class="list-group"><li id="explore" class="boards list-group-item active">Explore</li><li id="all-boards" class="boards list-group-item">All Boards</li>';
   boards.forEach((board) => {
-    domString += `<li id="${board.id}" class="boards list-group-item">${board.category}</li>`;
+    domString += `<li id="${board.id}" class="boards list-group-item">${board.category}<div class="delete dropdown-toggle"><i class="fas fa-minus-circle"></i> 
+    ${makeDropDown(board.category)}</div></li>`;
   });
-  domString += '</ul>';
+  domString += '</div>';
   utils.printToDom('#boards', domString);
+
   $('.boards').click((e) => {
     $('.boards').removeClass('active');
     $(e.target).addClass('active');
     cardsList.cardHTML(e);
+  });
+  $('.delete').click((e) => {
+    $('.dropdown-toggle').dropdown();
+    $('.close-dropdown').click($(e.target).closest('.dropdown-toggle').dropdown('toggle'));
+    const boardName = $(e.target).closest('.boards').text();
+    const board = $(e.target).parent();
+    const boardId = board.attr('id');
+    console.warn(boardName, board, boardId);
   });
 };
 

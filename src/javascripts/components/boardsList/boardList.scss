@@ -2,3 +2,26 @@
   background-color: dodgerblue;
   color: white;
 }
+
+.boards {
+  padding-left: 5px !important;
+}
+
+.delete {
+  float: right;
+  width: 5%;
+  color: white;
+}
+
+.active {
+  .delete {
+    color: dodgerblue
+  }
+  .delete:hover {
+    color: red;
+  }
+}
+.category {
+  float: left;
+  width: 50%;
+}

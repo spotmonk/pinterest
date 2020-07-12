@@ -32,6 +32,8 @@ const addBoard = (boardName) => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
+const deleteBoard = (boardId) => axios.delete(`${baseUrl}/boards/${boardId.json}`);
+
 export default {
   getBoards,
   getUserBoards,
@@ -39,4 +41,5 @@ export default {
   getBoardIDbyUID,
   getBoardByCategory,
   addBoard,
+  deleteBoard,
 };
