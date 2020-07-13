@@ -13,7 +13,9 @@ const addBoard = () => {
 
   if (!duplicate && boardName !== 'All Boards' && boardName !== '') {
     boardData.addBoard(boardName).then(() => {
-      boardsList.getUserBoards();
+      boardsList.buildBoardsList();
+      const explore = $('#explore');
+      explore.click();
     });
   }
 };

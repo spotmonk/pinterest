@@ -8,6 +8,10 @@ const getBoards = () => axios.get(`${baseUrl}/boards.json`);
 
 const getUserBoards = () => axios.get(`${baseUrl}/userBoards.json`);
 
+const getUserBoardsByBoardID = (boardId) => axios.get(`${baseUrl}/userBoards.json?orderBy="boardId"&equalTo="${boardId}"`);
+
+const deleteUserBoard = (UBId) => axios.delete(`${baseUrl}/userBoards/${UBId}.json`);
+
 const getBoardByBoardId = (boardId) => axios.get(`${baseUrl}/boards.json?orderBy="boardId"&equalTo="${boardId}"`);
 
 const getBoardByCategory = (category) => axios.get(`${baseUrl}/boards.json?orderBy="category"&equalTo="${category}"`);
@@ -32,14 +36,16 @@ const addBoard = (boardName) => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
-const deleteBoard = (boardId) => axios.delete(`${baseUrl}/boards/${boardId.json}`);
+const deleteBoard = (boardId) => axios.delete(`${baseUrl}/boards/${boardId}.json`);
 
 export default {
   getBoards,
   getUserBoards,
+  deleteUserBoard,
   getBoardByBoardId,
   getBoardIDbyUID,
   getBoardByCategory,
   addBoard,
   deleteBoard,
+  getUserBoardsByBoardID,
 };

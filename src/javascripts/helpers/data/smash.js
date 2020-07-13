@@ -48,16 +48,22 @@ const getCardsByUser = () => new Promise((resolve, reject) => {
 });
 
 const completelyRemoveBoard = (boardId) => new Promise((resolve, reject) => {
-  boardData.deleteBoard(boardId)
-    .then(() => {
-      userCardsData.getUserCardsBoardId(boardId).then((response) => {
-        const userCards = utils.responseToArray(response);
-        userCards.forEach((UC) => {
-          userCardsData.deleteUserCard(UC.id);
+  boardData.getUserBoardsByBoardID(boardId).then((response) => {
+    const userboard = utils.responseToArray(response);
+    boardData.deleteUserBoard(userboard[0].id).then(() => {
+      boardData.deleteBoard(boardId)
+        .then(() => {
+          userCardsData.getUserCardsBoardId(boardId).then((resp) => {
+            const userCards = utils.responseToArray(resp);
+            userCards.forEach((UC) => {
+              console.warn(UC);
+              userCardsData.deleteUserCard(UC.id);
+            });
+            resolve();
+          });
         });
-        resolve();
-      });
-    })
+    });
+  })
     .catch((err) => reject(err));
 });
 
