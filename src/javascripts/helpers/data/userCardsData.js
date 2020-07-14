@@ -16,11 +16,17 @@ const getUserCardsByCardId = (cardId) => new Promise((resolve, reject) => {
 
 const getUserCardsByUid = (uid) => axios.get(`${baseUrl}/userCards.json?orderBy="uid"&equalTo="${uid}"`);
 
+const getUserCardsBoardId = (boardId) => axios.get(`${baseUrl}/userCards.json?orderBy="boardId"&equalTo="${boardId}"`);
+
 const addUserCard = (UCObject) => axios.post(`${baseUrl}/userCards.json`, UCObject);
+
+const deleteUserCard = (UCId) => axios.delete(`${baseUrl}/userCards/${UCId}.json`);
 
 export default {
   getUserCards,
   getUserCardsByCardId,
   getUserCardsByUid,
+  getUserCardsBoardId,
   addUserCard,
+  deleteUserCard,
 };

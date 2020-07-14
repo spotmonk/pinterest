@@ -2,6 +2,7 @@ import utils from '../utils';
 import cardData from './cardData';
 import auth from '../../components/auth/auth';
 import userCardsData from './userCardsData';
+import boardData from './boardData';
 
 const cardsByBoardCategory = (boardId) => new Promise((resolve, reject) => {
   const currentUser = auth.getUser();
@@ -46,4 +47,24 @@ const getCardsByUser = () => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-export default { cardsByBoardCategory, getCardsByUser };
+const completelyRemoveBoard = (boardId) => new Promise((resolve, reject) => {
+  boardData.getUserBoardsByBoardID(boardId).then((response) => {
+    const userboard = utils.responseToArray(response);
+    boardData.deleteUserBoard(userboard[0].id).then(() => {
+      boardData.deleteBoard(boardId)
+        .then(() => {
+          userCardsData.getUserCardsBoardId(boardId).then((resp) => {
+            const userCards = utils.responseToArray(resp);
+            userCards.forEach((UC) => {
+              console.warn(UC);
+              userCardsData.deleteUserCard(UC.id);
+            });
+            resolve();
+          });
+        });
+    });
+  })
+    .catch((err) => reject(err));
+});
+
+export default { cardsByBoardCategory, getCardsByUser, completelyRemoveBoard };
